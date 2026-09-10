@@ -1,0 +1,20 @@
+.application:has([data-wbh-inspector-panel]) {
+  width: min(1000px, calc(100vw - 3rem)) !important;
+  max-width: calc(100vw - 3rem) !important;
+}
+
+[data-wbh-inspector-panel] {
+  box-sizing: border-box;
+  max-height: min(55vh, 36rem);
+  min-height: 0;
+  overflow: auto;
+  padding-right: 0.35rem;
+}
+
+[data-wbh-inspector-panel] [data-wbh-body-panel] {
+  min-width: 0;
+}
+
+[data-wbh-inspector-panel] pre {
+  max-width: 100%;
+}
