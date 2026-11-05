@@ -2,7 +2,7 @@
   "id": "traveller-system-generator",
   "title": "Traveller System Generator",
   "description": "Generate Traveller star systems and create Twodsix-compatible world actor data through a public Foundry VTT API.",
-  "version": "0.17.2",
+  "version": "0.17.2-test.572eede6",
   "authors": [
     {
       "name": "Solarion63"
@@ -12,7 +12,8 @@
     "scripts/traveller-system-generator.js"
   ],
   "styles": [
-    "styles/wbh-inspector.css"
+    "styles/wbh-inspector.css",
+    "styles/tsg-forms.css"
   ],
   "languages": [
     {
@@ -34,7 +35,5 @@
         "compatibility": {}
       }
     ]
-  },
-  "manifest": "https://github.com/Solarion63/traveller-system-generator-distribution/releases/latest/download/module.json",
-  "download": "https://github.com/Solarion63/traveller-system-generator-distribution/releases/download/v0.17.2/traveller-system-generator-v0.17.2.zip"
+  }
 }

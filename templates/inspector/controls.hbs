@@ -1,0 +1,23 @@
+<section class="tsg-inspector-controls">
+  {{#if empty}}
+  <p>{{empty}}</p>
+  {{else}}
+  <div class="form-group">
+    <label>{{labels.body}}</label>
+    <select name="wbhInspectorBodyId">
+      {{#each bodyOptions}}<option value="{{value}}"{{#if selected}} selected{{/if}}>{{label}}</option>{{/each}}
+    </select>
+  </div>
+  {{#if mainworldOptions.length}}
+  <div class="form-group">
+    <label>{{labels.mainworldSelection}}</label>
+    <select name="wbhMainworldOverrideId">
+      {{#each mainworldOptions}}<option value="{{value}}"{{#if selected}} selected{{/if}}>{{label}}</option>{{/each}}
+    </select>
+    <p class="hint">{{labels.mainworldHint}}</p>
+  </div>
+  {{/if}}
+  <p class="hint">{{labels.readOnly}}</p>
+  {{#if notesMissing}}<p class="hint tsg-notes-missing">{{notesMissing}}</p>{{/if}}
+  {{/if}}
+</section>
