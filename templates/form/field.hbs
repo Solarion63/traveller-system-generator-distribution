@@ -1,0 +1,64 @@
+{{!--
+  One form node (see src/integrations/foundry/formNodes.ts). Fieldsets render
+  their children with this partial. Every value is plain text, escaped by {{ }}.
+--}}
+{{#if (eq kind "text")}}
+<div class="form-group"{{#if hidden}} hidden{{/if}}>
+  <label>{{label}}</label>
+  <input type="text" name="{{name}}" value="{{value}}"{{#if maxLength}} maxlength="{{maxLength}}"{{/if}}{{#if placeholder}} placeholder="{{placeholder}}"{{/if}}{{#if autofocus}} autofocus{{/if}}>
+  {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}
+</div>
+{{else if (eq kind "number")}}
+<div class="form-group"{{#if hidden}} hidden{{/if}}>
+  <label>{{label}}</label>
+  <input type="number" name="{{name}}" value="{{value}}" step="{{step}}"{{#if min}} min="{{min}}"{{/if}}{{#if max}} max="{{max}}"{{/if}}>
+  {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}
+</div>
+{{else if (eq kind "select")}}
+<div class="form-group"{{#if hidden}} hidden{{/if}}>
+  <label>{{label}}</label>
+  <select name="{{name}}"{{#if disabled}} disabled{{/if}}>
+    {{#each options}}<option value="{{value}}"{{#if selected}} selected{{/if}}{{#if disabled}} disabled{{/if}}>{{label}}</option>{{/each}}
+  </select>
+  {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}
+</div>
+{{else if (eq kind "checkbox")}}
+<div class="form-group"{{#if hidden}} hidden{{/if}}>
+  <label class="checkbox"><input type="checkbox" name="{{name}}"{{#if checked}} checked{{/if}}> {{label}}</label>
+  {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}
+</div>
+{{else if (eq kind "hidden")}}
+<input type="hidden" name="{{name}}" value="{{value}}">
+{{else if (eq kind "static")}}
+<div class="form-group"{{#if hidden}} hidden{{/if}}>
+  <label>{{label}}</label>
+  <span class="tsg-form-static">{{value}}</span>
+  {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}
+</div>
+{{else if (eq kind "radio-card")}}
+<label class="tsg-radio-card{{#if disabled}} tsg-radio-card--disabled{{/if}}">
+  <input type="radio" name="{{name}}" value="{{value}}"{{#if checked}} checked{{/if}}{{#if disabled}} disabled{{/if}}>
+  <span><strong>{{label}}</strong><br><span class="hint">{{description}}</span></span>
+</label>
+{{else if (eq kind "hint")}}
+<p class="hint{{#if (eq tone "warning")}} tsg-form-warning{{/if}}">{{text}}</p>
+{{else if (eq kind "heading")}}
+<header class="tsg-form-heading">
+  <h2>{{text}}</h2>
+  {{#if hint}}<p class="hint">{{hint}}</p>{{/if}}
+</header>
+{{else if (eq kind "divider")}}
+<hr class="tsg-form-divider">
+{{else if (eq kind "box")}}
+<div class="tsg-form-box">
+  {{#if title}}<h3>{{title}}</h3>{{/if}}
+  {{#each rows}}<div class="tsg-row"><strong class="tsg-row__label">{{label}}</strong><span class="tsg-row__value">{{value}}</span></div>{{/each}}
+  {{#each lines}}<div>{{this}}</div>{{/each}}
+  {{#each hints}}<p class="hint">{{this}}</p>{{/each}}
+</div>
+{{else if (eq kind "fieldset")}}
+<fieldset class="tsg-form-fieldset">
+  <legend>{{legend}}</legend>
+  {{#each children}}{{> "modules/traveller-system-generator/templates/form/field.hbs"}}{{/each}}
+</fieldset>
+{{/if}}

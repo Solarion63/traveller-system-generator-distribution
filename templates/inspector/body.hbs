@@ -1,0 +1,9 @@
+<section class="tsg-inspector-body">
+  {{#if body}}
+  <div class="tsg-body-summary">
+    <h3>{{body.label}}</h3>
+    {{#each body.summary}}{{> "modules/traveller-system-generator/templates/inspector/node.hbs"}}{{/each}}
+  </div>
+  {{#each body.sections}}{{> "modules/traveller-system-generator/templates/inspector/node.hbs"}}{{/each}}
+  {{/if}}
+</section>
