@@ -1,0 +1,87 @@
+/* Generate, Update, Adopt and System Manager dialogs and the Referee editors (foundry/templates/form). */
+
+.tsg-form .window-content {
+  overflow-y: auto;
+}
+
+.tsg-form-fields {
+  display: grid;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.tsg-form-fields select,
+.tsg-form-fields input[type="text"],
+.tsg-form-fields input[type="number"] {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.tsg-form-fields .hint {
+  margin: 0;
+}
+
+.tsg-form-fields .tsg-form-warning {
+  padding: 0.35rem 0.5rem;
+  border-left: 3px solid var(--color-level-warning, #ee9b3a);
+  background: rgb(238 155 58 / 12%);
+  color: inherit;
+}
+
+.tsg-form-heading > h2 {
+  margin: 0;
+}
+
+.tsg-form-divider {
+  margin: 0.4rem 0;
+}
+
+.tsg-form-box {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  background: var(--color-bg-option);
+}
+
+.tsg-form-box > h3 {
+  margin: 0 0 0.5rem;
+}
+
+.tsg-form-box .tsg-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.8fr) minmax(0, 1.2fr);
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--color-border-light-primary);
+}
+
+.tsg-form-box .tsg-row__value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.tsg-form-fieldset > label.checkbox {
+  display: block;
+}
+
+.tsg-radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tsg-radio-card--disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Foundry's .form-group sets display, which would otherwise override the hidden attribute. */
+.tsg-form-fields [hidden] {
+  display: none !important;
+}

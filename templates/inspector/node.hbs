@@ -1,0 +1,43 @@
+{{!--
+  One Inspector view-model node (see src/integrations/foundry/inspectorNodes.ts).
+  Rendered recursively: sections and blocks render their children with this partial.
+  Every value is plain text, so it is escaped by {{ }}.
+--}}
+{{#if (eq kind "row")}}
+<div class="tsg-row"><strong class="tsg-row__label">{{label}}</strong><span class="tsg-row__value">{{value}}</span></div>
+{{else if (eq kind "section")}}
+<details class="tsg-section tsg-section--{{variant}}"{{#if open}} open{{/if}}>
+  <summary>{{title}}</summary>
+  <div class="tsg-section__body">
+    {{#each children}}{{> "modules/traveller-system-generator/templates/inspector/node.hbs"}}{{/each}}
+  </div>
+</details>
+{{else if (eq kind "block")}}
+<div class="tsg-block tsg-block--{{variant}}">
+  {{#if (eq variant "heading")}}<h4>{{title}}</h4>{{else if (eq variant "boxed")}}<h4>{{title}}</h4>{{else}}<strong class="tsg-block__label">{{title}}</strong>{{/if}}
+  {{#each children}}{{> "modules/traveller-system-generator/templates/inspector/node.hbs"}}{{/each}}
+</div>
+{{else if (eq kind "list")}}
+<div class="tsg-list{{#if muted}} hint{{/if}}">
+  <strong>{{label}}</strong>
+  <ul>{{#each items}}<li>{{this}}</li>{{/each}}</ul>
+</div>
+{{else if (eq kind "lines")}}
+<div class="tsg-lines">
+  {{#if label}}<strong>{{label}}</strong>{{/if}}
+  {{#each lines}}<div class="tsg-lines__line">{{this}}</div>{{/each}}
+</div>
+{{else if (eq kind "hint")}}
+<p class="hint tsg-hint">{{text}}</p>
+{{else if (eq kind "banner")}}
+<div class="tsg-banner"><div class="hint">{{caption}}</div><strong>{{value}}</strong></div>
+{{else if (eq kind "table")}}
+<div class="tsg-table">
+  <table>
+    <thead><tr>{{#each headers}}<th>{{this}}</th>{{/each}}</tr></thead>
+    <tbody>{{#each rows}}<tr>{{#each this}}<td{{#if title}} title="{{title}}"{{/if}}>{{text}}</td>{{/each}}</tr>{{/each}}</tbody>
+  </table>
+</div>
+{{else if (eq kind "pre")}}
+<pre class="tsg-pre">{{text}}</pre>
+{{/if}}
